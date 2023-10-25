@@ -38,3 +38,15 @@ export const deleteEmployeeFunc = async (id) => {
     console.error(error);
   }
 };
+
+export const updateEmployeeFunc = async (employee) => {
+  try {
+    const response = await axios.put(`http://localhost:8080/api/update`, {
+      ...employee,
+    });
+    const { data = [] } = response || {};
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
