@@ -18,3 +18,16 @@ export const useEmployeeStore = create((set) => ({
     set((state) => ({ cellNumber: newCellNum })),
   updateZipcode: (newZipCode) => set((state) => ({ zipCode: newZipCode })),
 }));
+
+export const useEditEmployeeStore = create((set) => ({
+  fullName: "",
+  address: "",
+  city: "",
+  cellNumber: "",
+  zipCode: "",
+  editFullName: (newFullName) => set((state) => ({ fullName: newFullName })),
+  editAddress: (newAddress) => set((state) => ({ address: newAddress })),
+  editCity: (newCity) => set((state) => ({ city: newCity })),
+  editCellNumber: (newCellNum) => set((state) => ({ cellNumber: newCellNum })),
+  editZipcode: (newZipCode) => set((state) => ({ zipCode: newZipCode })),
+}));
