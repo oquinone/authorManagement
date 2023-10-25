@@ -9,12 +9,12 @@ import {
 } from "@mui/material";
 
 export const DialogComponent = (props) => {
-  const { open, handleClose, cancel, callDelete } = props;
+  const { open, cancel, callDelete } = props;
   return (
     <div>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={cancel}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
