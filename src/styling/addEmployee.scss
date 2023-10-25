@@ -2,25 +2,17 @@
   display: flex;
   flex-flow: column nowrap;
   #add-employee-container {
-    // border: 1px solid rgb(216, 215, 215);
     border-radius: 6px;
     margin: 50px 420px;
     padding: 40px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     .input-container {
-      // border: 1px solid red;
-      margin: 0 0 10px 0;
+      margin: 0 0 20px 0;
     }
     .btn-container {
       display: flex;
       flex-flow: row nowrap;
       justify-content: flex-end;
     }
-    // .add-employee-row {
-    //   display: flex;
-    //   flex-flow: row nowrap;
-    //   justify-content: space-around;
-    //   padding: 10px 0;
-    // }
   }
 }

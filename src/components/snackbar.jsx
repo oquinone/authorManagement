@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
@@ -7,27 +7,22 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const SnackBarComponent = (props) => {
-  const [isOpen, setOpen] = useState(props.open);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+  const { open, handleClose } = props;
   return (
     <>
       <Snackbar
-        open={isOpen}
-        autoHideDuration={6000}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        onClose={() => handleClose}
+        open={open}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => handleClose()}
         message={props.message}
       >
         <Alert
-          onClose={() => handleClose}
+          onClose={() => handleClose()}
           severity="success"
           sx={{ width: "100%" }}
         >
-          {props.message}
+          {"Successfully Added Employee"}
         </Alert>
       </Snackbar>
     </>

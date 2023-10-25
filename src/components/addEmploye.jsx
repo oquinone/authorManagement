@@ -21,17 +21,24 @@ const AddEmployeeComponent = () => {
   const updateAddress = useEmployeeStore((state) => state.updateAddress);
   const updateCity = useEmployeeStore((state) => state.updateCity);
   const updateZipcode = useEmployeeStore((state) => state.updateZipcode);
+  const resetData = useEmployeeStore((state) => state.resetData);
+
+  const handleCloseSnackbar = () => {
+    setSnackBar(false);
+  };
 
   return (
     <div id="add-employee-outer-container">
-      <SnackBarComponent open={snackBar} message="Success" />
+      <SnackBarComponent open={snackBar} handleClose={handleCloseSnackbar} />
       <NavbarComponent />
       <div id="add-employee-container">
-        <div>
-          <Typography variant="h5">Add Employee</Typography>
+        <div className="input-container">
+          <Typography variant="h5" align="center">
+            Add Employee
+          </Typography>
         </div>
         <div className="input-container">
-          <Typography variant="subtitle1">Full Name</Typography>
+          {/* <Typography variant="subtitle1">Full Name</Typography> */}
           <TextField
             id="standard-size-normal"
             label="Full Name"
@@ -43,7 +50,7 @@ const AddEmployeeComponent = () => {
           />
         </div>
         <div className="input-container">
-          <Typography variant="subtitle1">Cell Phone #</Typography>
+          {/* <Typography variant="subtitle1">Cell Phone #</Typography> */}
           <TextField
             id="standard-size-normal"
             label="Cell #"
@@ -55,7 +62,7 @@ const AddEmployeeComponent = () => {
           />
         </div>
         <div className="input-container">
-          <Typography variant="subtitle1">Address</Typography>
+          {/* <Typography variant="subtitle1">Address</Typography> */}
           <TextField
             id="standard-size-normal"
             label="Address"
@@ -67,7 +74,7 @@ const AddEmployeeComponent = () => {
           />
         </div>
         <div className="input-container">
-          <Typography variant="subtitle1">City</Typography>
+          {/* <Typography variant="subtitle1">City</Typography> */}
           <TextField
             id="standard-size-normal"
             label="City"
@@ -79,7 +86,7 @@ const AddEmployeeComponent = () => {
           />
         </div>
         <div className="input-container">
-          <Typography variant="subtitle1">Zipcode</Typography>
+          {/* <Typography variant="subtitle1">Zipcode</Typography> */}
           <TextField
             id="standard-size-normal"
             label="Zipcode"
@@ -93,16 +100,17 @@ const AddEmployeeComponent = () => {
         <div className="btn-container">
           <Button
             variant="contained"
-            onClick={() =>
+            onClick={() => {
               addNewEmployee({
                 fullName,
                 address,
                 city,
                 cellNumber,
                 zipCode,
-                // id: 1,
-              }).then(async (e) => await setSnackBar(true))
-            }
+              });
+              setSnackBar(true);
+              resetData();
+            }}
           >
             Add Employee
           </Button>
