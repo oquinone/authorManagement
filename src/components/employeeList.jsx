@@ -3,6 +3,7 @@ import "../styling/employeeList.scss";
 import NavbarComponent from "./navbar";
 import IconButton from "@mui/material/IconButton";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import Typography from "@mui/material/Typography";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { getEmployeeList } from "../apis/api";
 import { DialogComponent } from "./dialog";
@@ -27,7 +28,7 @@ const EmployeeList = () => {
   const editCellNumber = useEditEmployeeStore((state) => state.cellNumber);
   const editAddress = useEditEmployeeStore((state) => state.address);
   const editCity = useEditEmployeeStore((state) => state.city);
-  const editZipcode = useEditEmployeeStore((state) => state.zipcode);
+  const editZipcode = useEditEmployeeStore((state) => state.zipCode);
 
   useEffect(() => {
     const getData = async () => {
@@ -70,7 +71,7 @@ const EmployeeList = () => {
       cellNumber: editCellNumber,
       address: editAddress,
       city: editCity,
-      zipcode: editZipcode,
+      zipCode: editZipcode,
       id: selectedIdx.id,
     };
     await updateEmployeeFunc(currentEmployee);
@@ -81,8 +82,6 @@ const EmployeeList = () => {
 
   return (
     <div id="employee-list-container">
-      {/* <DrawerComponent /> */}
-      {/* <SidebarComponent /> */}
       <NavbarComponent />
       <DialogComponent
         open={deleteEmployee}
@@ -95,13 +94,31 @@ const EmployeeList = () => {
         updateEmployee={updateEmployee}
       />
       <div id="list-container">
+        <div id="item-header">
+          <div className="item-header-item">
+            <Typography variant="h6">Name</Typography>
+          </div>
+          <div className="item-header-item">
+            <Typography variant="h6">Address</Typography>
+          </div>
+          <div className="item-header-item">
+            <Typography variant="h6">Phone #</Typography>
+          </div>
+          <div className="item-header-item">
+            <Typography variant="h6">Action</Typography>
+          </div>
+        </div>
         {employees.map((item, index) => {
           return (
             <div className="list-items" key={`${item.fullName}_${index}`}>
-              <span>{item.fullName}</span>
-              <span>{item.address}</span>
-              <span>{item.cellNumber}</span>
-              <span>
+              <div>{item.fullName}</div>
+              <div>
+                {`${item.address}`}
+                <br />
+                {`${item.city} ${item.zipCode}`}
+              </div>
+              <div>{item.cellNumber}</div>
+              <div>
                 <IconButton
                   onClick={() => {
                     openEditDialog(item.id, index);
@@ -117,7 +134,7 @@ const EmployeeList = () => {
                 >
                   <DeleteForeverIcon />
                 </IconButton>
-              </span>
+              </div>
             </div>
           );
         })}

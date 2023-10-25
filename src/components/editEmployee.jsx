@@ -26,14 +26,8 @@ const EditEmployeeComponenet = (props) => {
 
   return (
     <div>
-      <Dialog
-        open={open}
-        onClose={closeDialog}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        fullWidth
-      >
-        <DialogTitle id="alert-dialog-title">{"Edit Employee"}</DialogTitle>
+      <Dialog open={open} onClose={closeDialog} fullWidth>
+        <DialogTitle id="edit-employee-title">{"Edit Employee"}</DialogTitle>
         <DialogContent id="edit-employee-container">
           <div className="input-container">
             {/* <Typography variant="subtitle1">Full Name</Typography> */}
