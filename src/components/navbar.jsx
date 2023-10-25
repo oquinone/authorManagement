@@ -13,24 +13,14 @@ const NavbarComponent = () => {
     <div id="navbar-container">
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Employee Management
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
-          <Button color="inherit" href="/">
-            Employees
-          </Button>
           <Button color="inherit" href="/add">
             Add Employee
+          </Button>
+          <Button color="inherit" href="/">
+            Employees
           </Button>
         </Toolbar>
       </AppBar>
