@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 
-export const DialogComponent = (props) => {
+export const DeleteAuthorComponent = (props) => {
   const { open, cancel, callDelete } = props;
   return (
     <div>

@@ -12,7 +12,7 @@ import {
   addBookApi,
   removeBookApi,
 } from "../apis/api";
-import { DialogComponent } from "./deleteDialog";
+import { DeleteAuthorComponent } from "./deleteAuthor";
 import EditAuthorComponenet from "./editAuthor";
 import { useEditAuthorStore, useAddBookStore } from "../store/store";
 import AddBook from "./addBook";
@@ -136,7 +136,7 @@ const AuthorList = () => {
   return (
     <div id="author-list-container">
       <NavbarComponent />
-      <DialogComponent
+      <DeleteAuthorComponent
         open={deleteAuthor}
         cancel={cancelDeleteAuthor}
         callDelete={deleteAuthorFunc}
