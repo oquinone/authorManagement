@@ -22,7 +22,7 @@ const SnackBarComponent = (props) => {
           severity="success"
           sx={{ width: "100%" }}
         >
-          {"Successfully Added Employee"}
+          {"Successfully Added Author"}
         </Alert>
       </Snackbar>
     </>

@@ -1,36 +1,56 @@
 import { create } from "zustand";
 
-export const useEmployeeStore = create((set) => ({
-  fullName: "",
-  address: "",
-  city: "",
-  cellNumber: "",
-  zipCode: "",
+export const useAuthorStore = create((set) => ({
+  firstName: "",
+  lastName: "",
+  located: "",
+  phoneNumber: "",
+  books: [],
   resetData: () =>
     set((state) => ({
-      fullName: "",
-      address: "",
-      city: "",
-      cellNumber: "",
-      zipCode: "",
+      firstName: "",
+      lastName: "",
+      located: "",
+      phoneNumber: "",
+      books: [],
     })),
-  updateFullName: (newFullName) => set((state) => ({ fullName: newFullName })),
-  updateAddress: (newAddress) => set((state) => ({ address: newAddress })),
-  updateCity: (newCity) => set((state) => ({ city: newCity })),
-  updateCellNumber: (newCellNum) =>
-    set((state) => ({ cellNumber: newCellNum })),
-  updateZipcode: (newZipCode) => set((state) => ({ zipCode: newZipCode })),
+  updateFirstName: (newFirstName) =>
+    set((state) => ({ firstName: newFirstName })),
+  updateLastName: (newLastName) => set((state) => ({ lastName: newLastName })),
+  updateLocated: (newLocated) => set((state) => ({ located: newLocated })),
+  updatePhoneNumber: (phoneNumber) =>
+    set((state) => ({ phoneNumber: phoneNumber })),
+  // updateZipcode: (newZipCode) => set((state) => ({ zipCode: newZipCode })),
 }));
 
-export const useEditEmployeeStore = create((set) => ({
-  fullName: "",
-  address: "",
-  city: "",
-  cellNumber: "",
-  zipCode: "",
-  editFullName: (newFullName) => set((state) => ({ fullName: newFullName })),
-  editAddress: (newAddress) => set((state) => ({ address: newAddress })),
-  editCity: (newCity) => set((state) => ({ city: newCity })),
-  editCellNumber: (newCellNum) => set((state) => ({ cellNumber: newCellNum })),
-  editZipcode: (newZipCode) => set((state) => ({ zipCode: newZipCode })),
+export const useEditAuthorStore = create((set) => ({
+  firstName: "",
+  lastName: "",
+  located: "",
+  phoneNumber: "",
+  editFirstName: (newFirstName) =>
+    set((state) => ({ firstName: newFirstName })),
+  editLastName: (newLastName) => set((state) => ({ lastName: newLastName })),
+  editLocated: (newLocated) => set((state) => ({ located: newLocated })),
+  editPhoneNumber: (newNum) => set((state) => ({ phoneNumber: newNum })),
+}));
+
+export const useAddBookStore = create((set) => ({
+  isbn: "",
+  bookName: "",
+  copyrightDate: "",
+  publishedDate: "",
+
+  resetBookStore: () =>
+    set((state) => ({
+      isbn: "",
+      bookName: "",
+      copyrightDate: "",
+      publishedDate: "",
+    })),
+
+  enterIsbn: (newIsbn) => set((state) => ({ isbn: newIsbn })),
+  enterBookName: (name) => set((state) => ({ bookName: name })),
+  enterCopyRightDate: (date) => set((state) => ({ copyrightDate: date })),
+  enterPublishedDate: (date) => set((state) => ({ publishedDate: date })),
 }));

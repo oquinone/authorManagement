@@ -18,10 +18,10 @@ export const DialogComponent = (props) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Remove Employee"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Remove Author"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Would you like to delete this employee from the database?
+            Would you like to delete this Author from the database?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

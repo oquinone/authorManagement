@@ -1,1 +1,1 @@
-export { list } from "./employeeList.mock";
+export { list } from "./authorList.mock";

@@ -1,4 +1,4 @@
-#employee-list-container {
+#author-list-container {
   display: flex;
   flex-flow: column nowrap;
   width: auto;
@@ -7,7 +7,7 @@
     #item-header {
       display: flex;
       flex-flow: row nowrap;
-      padding: 20px 0 0 0;
+      padding: 40px 0 0 0;
       .item-header-item {
         width: 25%;
         text-align: center;

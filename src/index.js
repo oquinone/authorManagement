@@ -3,17 +3,17 @@ import ReactDOM from "react-dom/client";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import EmployeeList from "./components/employeeList";
-import AddEmployeeComponent from "./components/addEmploye";
+import AuthorList from "./components/authorList";
+import AddAuthorComponent from "./components/addAuthor";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <EmployeeList />,
+    element: <AuthorList />,
   },
   {
     path: "/add",
-    element: <AddEmployeeComponent />,
+    element: <AddAuthorComponent />,
   },
 ]);
 

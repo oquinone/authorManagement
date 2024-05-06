@@ -2,25 +2,22 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// import Link from "@mui/material/Link";
-// import MenuItem from "@mui/material/MenuItem";
-// import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
+import "../styling/navbar.scss";
 
 const NavbarComponent = () => {
-  // const pages = ["Products", "Pricing", "Blog"];
   return (
     <div id="navbar-container">
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Employee Management
+            Author Management
           </Typography>
           <Button color="inherit" href="/add">
-            Add Employee
+            Add Author
           </Button>
           <Button color="inherit" href="/">
-            Employees
+            Authors
           </Button>
         </Toolbar>
       </AppBar>

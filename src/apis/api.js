@@ -1,9 +1,9 @@
 import axios from "axios";
 import { list } from "../mockData";
 
-export const getEmployeeList = async () => {
+export const getAuthorListApi = async () => {
   try {
-    const response = await axios.get("http://localhost:8080/api/allEmployees");
+    const response = await axios.get("http://localhost:8080/author");
     // console.log(response);
     const { data = [] } = response || {};
     return data;
@@ -13,12 +13,14 @@ export const getEmployeeList = async () => {
   }
 };
 
-export const addNewEmployee = async (employee) => {
+export const addNewAuthorApi = async (author) => {
   try {
-    const response = await axios.post("http://localhost:8080/api/add", {
-      ...employee,
-    });
-    // console.log(response);
+    const response = await axios.post(
+      "http://localhost:8080/author/addAuthor",
+      {
+        ...author,
+      }
+    );
     const { data = [] } = response || {};
     return data;
   } catch (error) {
@@ -27,10 +29,10 @@ export const addNewEmployee = async (employee) => {
   }
 };
 
-export const deleteEmployeeFunc = async (id) => {
+export const deleteAuthorApi = async (id) => {
   try {
     const response = await axios.delete(
-      `http://localhost:8080/api/deleteEmployee/${id}`
+      `http://localhost:8080/author/delete/${id}`
     );
     const { data = [] } = response || {};
     return data;
@@ -39,11 +41,44 @@ export const deleteEmployeeFunc = async (id) => {
   }
 };
 
-export const updateEmployeeFunc = async (employee) => {
+export const updateAuthorApi = async (id, author) => {
   try {
-    const response = await axios.put(`http://localhost:8080/api/update`, {
-      ...employee,
-    });
+    const response = await axios.put(
+      `http://localhost:8080/author/updateAuthor/${id}`,
+      {
+        ...author,
+      }
+    );
+    const { data = [] } = response || {};
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addBookApi = async (authorId, book) => {
+  try {
+    const response = await axios.patch(
+      `http://localhost:8080/author/addBook/${authorId}`,
+      {
+        ...book,
+      }
+    );
+    const { data = [] } = response || {};
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const removeBookApi = async (authorId, book) => {
+  try {
+    const response = await axios.patch(
+      `http://localhost:8080/author/removeBook/${authorId}`,
+      {
+        ...book,
+      }
+    );
     const { data = [] } = response || {};
     return data;
   } catch (error) {
