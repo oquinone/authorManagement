@@ -135,8 +135,6 @@ const AuthorList = () => {
     setAuthors(data);
   };
 
-  // return "Hello World";
-
   if (loading) {
     return <CircularProgress />;
   }
