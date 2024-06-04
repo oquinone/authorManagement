@@ -63,7 +63,7 @@ const EditAuthorComponenet = (props) => {
           <div className="input-container">
             <TextField
               id="standard-size-normal"
-              label="Cell #"
+              label="Phone #"
               variant="outlined"
               size="small"
               value={phoneNumber}
