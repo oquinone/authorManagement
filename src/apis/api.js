@@ -3,7 +3,9 @@ import { list } from "../mockData";
 
 export const getAuthorListApi = async () => {
   try {
-    const response = await axios.get("http://localhost:8080/author");
+    const response = await axios.get(
+      "https://protected-dawn-22742-5815f7097b83.herokuapp.com/author"
+    );
     // console.log(response);
     const { data = [] } = response || {};
     return data;
@@ -16,7 +18,7 @@ export const getAuthorListApi = async () => {
 export const addNewAuthorApi = async (author) => {
   try {
     const response = await axios.post(
-      "http://localhost:8080/author/addAuthor",
+      "https://protected-dawn-22742-5815f7097b83.herokuapp.com/author/addAuthor",
       {
         ...author,
       }
@@ -32,7 +34,7 @@ export const addNewAuthorApi = async (author) => {
 export const deleteAuthorApi = async (id) => {
   try {
     const response = await axios.delete(
-      `http://localhost:8080/author/delete/${id}`
+      `https://protected-dawn-22742-5815f7097b83.herokuapp.com/author/delete/${id}`
     );
     const { data = [] } = response || {};
     return data;
@@ -44,7 +46,7 @@ export const deleteAuthorApi = async (id) => {
 export const updateAuthorApi = async (id, author) => {
   try {
     const response = await axios.put(
-      `http://localhost:8080/author/updateAuthor/${id}`,
+      `https://protected-dawn-22742-5815f7097b83.herokuapp.com/author/updateAuthor/${id}`,
       {
         ...author,
       }
@@ -59,7 +61,7 @@ export const updateAuthorApi = async (id, author) => {
 export const addBookApi = async (authorId, book) => {
   try {
     const response = await axios.patch(
-      `http://localhost:8080/author/addBook/${authorId}`,
+      `https://protected-dawn-22742-5815f7097b83.herokuapp.com/author/addBook/${authorId}`,
       {
         ...book,
       }
@@ -74,7 +76,7 @@ export const addBookApi = async (authorId, book) => {
 export const removeBookApi = async (authorId, book) => {
   try {
     const response = await axios.patch(
-      `http://localhost:8080/author/removeBook/${authorId}`,
+      `https://protected-dawn-22742-5815f7097b83.herokuapp.com/author/removeBook/${authorId}`,
       {
         ...book,
       }
