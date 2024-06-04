@@ -7,6 +7,7 @@ import {
   // RouterProvider,
   HashRouter,
   Route,
+  Routes,
 } from "react-router-dom";
 import AuthorList from "./components/authorList";
 import AddAuthorComponent from "./components/addAuthor";
@@ -31,8 +32,10 @@ root.render(
     {/* <App /> */}
     {/* <RouterProvider router={router} /> */}
     <HashRouter>
-      <Route path="/" Component={AuthorList} />
-      <Route path="/add" Component={AddAuthorComponent} />
+      <Routes>
+        <Route path="/" Component={AuthorList} exact />
+        <Route path="/add" Component={AddAuthorComponent} exact />
+      </Routes>
     </HashRouter>
   </React.StrictMode>
 );
