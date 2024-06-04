@@ -4,39 +4,40 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import {
   // createBrowserRouter,
-  // RouterProvider,
-  HashRouter,
-  Route,
-  Routes,
+  RouterProvider,
+  createHashRouter,
+  // HashRouter,
+  // Route,
+  // Routes,
 } from "react-router-dom";
 import AuthorList from "./components/authorList";
 import AddAuthorComponent from "./components/addAuthor";
-// import ErrorPage from "./components/errorPage";
+import ErrorPage from "./components/errorPage";
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <AuthorList />,
-//     errorElement: <ErrorPage />,
-//   },
-//   {
-//     path: "/add",
-//     element: <AddAuthorComponent />,
-//     errorElement: <ErrorPage />,
-//   },
-// ]);
+const router = createHashRouter([
+  {
+    path: "/*",
+    element: <AuthorList />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/add",
+    element: <AddAuthorComponent />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    {/* <RouterProvider router={router} /> */}
-    <HashRouter baseline="/">
+    <RouterProvider router={router} />
+    {/* <HashRouter baseline="/">
       <Routes>
         <Route path="/" Component={AuthorList} exact />
         <Route path="/add" Component={AddAuthorComponent} exact />
       </Routes>
-    </HashRouter>
+    </HashRouter> */}
   </React.StrictMode>
 );
 
