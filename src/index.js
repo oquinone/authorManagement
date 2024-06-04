@@ -10,7 +10,7 @@ root.render(
     <Router>
       <div>
         <Switch>
-          <Route path="/authorManagement" exact>
+          <Route path="/#" exact>
             <AuthorList />
           </Route>
           <Route path="/add" exact>
