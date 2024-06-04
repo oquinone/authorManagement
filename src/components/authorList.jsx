@@ -298,8 +298,8 @@ const Data = (props) => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Book Name</TableCell>
-                    <TableCell>Published Date</TableCell>
-                    <TableCell>Copyright Date</TableCell>
+                    <TableCell>Published</TableCell>
+                    <TableCell>Copyrighted</TableCell>
                     <TableCell>Remove</TableCell>
                   </TableRow>
                 </TableHead>
