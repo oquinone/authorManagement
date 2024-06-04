@@ -5,11 +5,13 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthorList from "./components/authorList";
 import AddAuthorComponent from "./components/addAuthor";
+import ErrorPage from "./components/errorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AuthorList />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/add",
