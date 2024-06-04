@@ -2,28 +2,38 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  // createBrowserRouter,
+  // RouterProvider,
+  HashRouter,
+  Route,
+} from "react-router-dom";
 import AuthorList from "./components/authorList";
 import AddAuthorComponent from "./components/addAuthor";
-import ErrorPage from "./components/errorPage";
+// import ErrorPage from "./components/errorPage";
 
-const router = createBrowserRouter([
-  {
-    path: "https://oquinone.github.io/authorManagement/",
-    element: <AuthorList />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "https://oquinone.github.io/authorManagement/add",
-    element: <AddAuthorComponent />,
-  },
-]);
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <AuthorList />,
+//     errorElement: <ErrorPage />,
+//   },
+//   {
+//     path: "/add",
+//     element: <AddAuthorComponent />,
+//     errorElement: <ErrorPage />,
+//   },
+// ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <RouterProvider router={router} />
+    {/* <RouterProvider router={router} /> */}
+    <HashRouter basename="https://oquinone.github.io/authorManagement/">
+      <Route path="/" element={<AuthorList />} />
+      <Route path="/add" element={<AddAuthorComponent />} />
+    </HashRouter>
   </React.StrictMode>
 );
 
