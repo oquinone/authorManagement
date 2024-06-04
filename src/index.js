@@ -9,12 +9,12 @@ import ErrorPage from "./components/errorPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "https://oquinone.github.io/authorManagement/",
     element: <AuthorList />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/add",
+    path: "https://oquinone.github.io/authorManagement/add",
     element: <AddAuthorComponent />,
   },
 ]);
