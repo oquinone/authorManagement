@@ -16,12 +16,12 @@ import ErrorPage from "./components/errorPage";
 
 const router = createHashRouter([
   {
-    path: "/*",
+    path: "/",
     element: <AuthorList />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "*/authorManagement/add",
+    path: "#/authorManagement/add",
     element: <AddAuthorComponent />,
     errorElement: <ErrorPage />,
   },
