@@ -16,7 +16,7 @@ import ErrorPage from "./components/errorPage";
 
 const router = createHashRouter([
   {
-    path: "/*",
+    path: "/authorManagement",
     element: <AuthorList />,
     errorElement: <ErrorPage />,
   },
