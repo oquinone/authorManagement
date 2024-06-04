@@ -21,7 +21,7 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/authorManagement/add",
+    path: "*/authorManagement/add",
     element: <AddAuthorComponent />,
     errorElement: <ErrorPage />,
   },
