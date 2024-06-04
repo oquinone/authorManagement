@@ -16,7 +16,7 @@ const NavbarComponent = () => {
           <Button color="inherit" href="/add">
             Add Author
           </Button>
-          <Button color="inherit" href="/">
+          <Button color="inherit" href="/#">
             Authors
           </Button>
         </Toolbar>
