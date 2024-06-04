@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import CircularProgress from "@mui/material/CircularProgress";
 import {
   getAuthorListApi,
   deleteAuthorApi,
@@ -40,6 +41,7 @@ const AuthorList = () => {
   const [editAuthor, setEditAuthor] = useState(false);
   const [book, setAddBook] = useState(false);
   const [selectedIdx, setSelectedIndex] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const updateFirstName = useEditAuthorStore((state) => state.editFirstName);
   const updateLastName = useEditAuthorStore((state) => state.editLastName);
@@ -59,6 +61,7 @@ const AuthorList = () => {
     const getData = async () => {
       const data = await getAuthorListApi();
       setAuthors(data);
+      setLoading(false);
     };
     getData();
   }, []);
@@ -127,11 +130,14 @@ const AuthorList = () => {
   };
 
   const removeBook = async (authorId, book) => {
-    // console.log(book);
     await removeBookApi(authorId, book);
     const data = await getAuthorListApi();
     setAuthors(data);
   };
+
+  if (loading) {
+    return <CircularProgress />;
+  }
 
   return (
     <div id="author-list-container">
@@ -159,9 +165,7 @@ const AuthorList = () => {
           <TableHead>
             <TableRow>
               <TableCell align="left" />
-              <TableCell align="left" xs>
-                Author
-              </TableCell>
+              <TableCell align="left">Author</TableCell>
               <TableCell align="left">Located</TableCell>
               <TableCell align="left">Phone #</TableCell>
               <TableCell align="left">Actions</TableCell>
@@ -179,6 +183,7 @@ const AuthorList = () => {
                   // setAddBook={setAddBook}
                   openBookModal={openBookModal}
                   removeBook={removeBook}
+                  key={`${item.firstName}_${item.lastName}_${item.phoneNumber}_${item.id}`}
                 />
               );
             })}
