@@ -30,9 +30,9 @@ root.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <RouterProvider router={router} /> */}
-    <HashRouter basename="https://oquinone.github.io">
-      <Route path="/authorManagement" element={<AuthorList />} />
-      <Route path="/add" element={<AddAuthorComponent />} />
+    <HashRouter>
+      <Route path="/" Component={AuthorList} />
+      <Route path="/add" Component={AddAuthorComponent} />
     </HashRouter>
   </React.StrictMode>
 );
