@@ -31,7 +31,7 @@ root.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <RouterProvider router={router} /> */}
-    <HashRouter>
+    <HashRouter basename="authorManagement">
       <Routes>
         <Route path="/" Component={AuthorList} exact />
         <Route path="/add" Component={AddAuthorComponent} exact />
