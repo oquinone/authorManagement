@@ -135,63 +135,65 @@ const AuthorList = () => {
     setAuthors(data);
   };
 
-  if (loading) {
-    return <CircularProgress />;
-  }
+  return "Hello World";
 
-  return (
-    <div id="author-list-container">
-      <NavbarComponent />
-      <DeleteAuthorComponent
-        open={deleteAuthor}
-        cancel={cancelDeleteAuthor}
-        callDelete={deleteAuthorFunc}
-      />
-      <EditAuthorComponenet
-        open={editAuthor}
-        closeDialog={closeEditAuthor}
-        updateAuthor={updateAuthor}
-      />
-      <AddBook open={book} closeBook={closeBook} addBook={addBook} />
-      <br />
-      <br />
+  // if (loading) {
+  //   return <CircularProgress />;
+  // }
 
-      {/* Adding Table  */}
-      <TableContainer
-        component={Paper}
-        style={{ width: "90%", margin: "auto" }}
-      >
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell align="left" />
-              <TableCell align="left">Author</TableCell>
-              <TableCell align="left">Located</TableCell>
-              <TableCell align="left">Phone #</TableCell>
-              <TableCell align="left">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {authors.map((item, index) => {
-              return (
-                <Data
-                  item={item}
-                  index={index}
-                  openEditDialog={openEditAuthor}
-                  setSelectedIndex={setSelectedIndex}
-                  setDeleteAuthor={setDeleteAuthor}
-                  // setAddBook={setAddBook}
-                  openBookModal={openBookModal}
-                  removeBook={removeBook}
-                  key={`${item.firstName}_${item.lastName}_${item.phoneNumber}_${item.id}`}
-                />
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
-  );
+  // return (
+  //   <div id="author-list-container">
+  //     <NavbarComponent />
+  //     <DeleteAuthorComponent
+  //       open={deleteAuthor}
+  //       cancel={cancelDeleteAuthor}
+  //       callDelete={deleteAuthorFunc}
+  //     />
+  //     <EditAuthorComponenet
+  //       open={editAuthor}
+  //       closeDialog={closeEditAuthor}
+  //       updateAuthor={updateAuthor}
+  //     />
+  //     <AddBook open={book} closeBook={closeBook} addBook={addBook} />
+  //     <br />
+  //     <br />
+
+  //     {/* Adding Table  */}
+  //     <TableContainer
+  //       component={Paper}
+  //       style={{ width: "90%", margin: "auto" }}
+  //     >
+  //       <Table>
+  //         <TableHead>
+  //           <TableRow>
+  //             <TableCell align="left" />
+  //             <TableCell align="left">Author</TableCell>
+  //             <TableCell align="left">Located</TableCell>
+  //             <TableCell align="left">Phone #</TableCell>
+  //             <TableCell align="left">Actions</TableCell>
+  //           </TableRow>
+  //         </TableHead>
+  //         <TableBody>
+  //           {authors.map((item, index) => {
+  //             return (
+  //               <Data
+  //                 item={item}
+  //                 index={index}
+  //                 openEditDialog={openEditAuthor}
+  //                 setSelectedIndex={setSelectedIndex}
+  //                 setDeleteAuthor={setDeleteAuthor}
+  //                 // setAddBook={setAddBook}
+  //                 openBookModal={openBookModal}
+  //                 removeBook={removeBook}
+  //                 key={`${item.firstName}_${item.lastName}_${item.phoneNumber}_${item.id}`}
+  //               />
+  //             );
+  //           })}
+  //         </TableBody>
+  //       </Table>
+  //     </TableContainer>
+  //   </div>
+  // );
 };
 
 const Data = (props) => {
