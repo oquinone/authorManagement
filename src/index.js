@@ -19,9 +19,16 @@ const router = createHashRouter([
     path: "/",
     element: <AuthorList />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/add",
+        element: <AddAuthorComponent />,
+        // loader: teamLoader,
+      },
+    ],
   },
   {
-    path: "#/authorManagement/add",
+    path: "/add",
     element: <AddAuthorComponent />,
     errorElement: <ErrorPage />,
   },

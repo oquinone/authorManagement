@@ -13,10 +13,10 @@ const NavbarComponent = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Author Management
           </Typography>
-          <Button color="inherit" href="#/authorManagement/add">
+          <Button color="inherit" href="/add">
             Add Author
           </Button>
-          <Button color="inherit" href="#/authorManagement">
+          <Button color="inherit" href="/">
             Authors
           </Button>
         </Toolbar>
