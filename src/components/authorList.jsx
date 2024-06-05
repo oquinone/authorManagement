@@ -43,17 +43,13 @@ const AuthorList = () => {
   const [selectedIdx, setSelectedIndex] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const updateFirstName = useEditAuthorStore((state) => state.editFirstName);
-  const updateLastName = useEditAuthorStore((state) => state.editLastName);
-  const updatePhoneNumber = useEditAuthorStore(
-    (state) => state.editPhoneNumber
-  );
-  const updateLocated = useEditAuthorStore((state) => state.editLocated);
+  const { editFirstName, editLastName, editPhoneNumber, editLocated } =
+    useEditAuthorStore();
 
-  const editFirstName = useEditAuthorStore((state) => state.firstName);
-  const editLastName = useEditAuthorStore((state) => state.lastName);
-  const editPhoneNumber = useEditAuthorStore((state) => state.phoneNumber);
-  const editLocated = useEditAuthorStore((state) => state.located);
+  const storeFirstName = useEditAuthorStore((state) => state.firstName);
+  const storeLastName = useEditAuthorStore((state) => state.lastName);
+  const storePhoneNumber = useEditAuthorStore((state) => state.phoneNumber);
+  const storeLocated = useEditAuthorStore((state) => state.located);
 
   const bookStore = useAddBookStore();
 
@@ -66,11 +62,11 @@ const AuthorList = () => {
     getData();
   }, []);
 
-  const cancelDeleteAuthor = () => {
+  const cancelBtnToDeleteAuthor = () => {
     setDeleteAuthor(false);
   };
 
-  const deleteAuthorFunc = async () => {
+  const callDeleteAuthor = async () => {
     setDeleteAuthor(false);
     const item = authors[selectedIdx.index];
     await deleteAuthorApi(item.id);
@@ -78,26 +74,26 @@ const AuthorList = () => {
     setAuthors(data);
   };
 
-  const openEditAuthor = (id, index) => {
+  const openModalToEditAuthor = (id, index) => {
     const row = authors[index];
-    updateFirstName(row.firstName);
-    updateLastName(row.lastName);
-    updatePhoneNumber(row.phoneNumber);
-    updateLocated(row.located);
+    editFirstName(row.firstName);
+    editLastName(row.lastName);
+    editPhoneNumber(row.phoneNumber);
+    editLocated(row.located);
     setSelectedIndex({ id, index });
     setEditAuthor(true);
   };
 
-  const closeEditAuthor = () => {
+  const closeEditAuthorModal = () => {
     setEditAuthor(false);
   };
 
-  const updateAuthor = async () => {
+  const callUpdateAuthor = async () => {
     let currentAuthor = {
-      firstName: editFirstName,
-      lastName: editLastName,
-      phoneNumber: editPhoneNumber,
-      located: editLocated,
+      firstName: storeFirstName,
+      lastName: storeLastName,
+      phoneNumber: storePhoneNumber,
+      located: storeLocated,
       id: selectedIdx.id,
     };
     await updateAuthorApi(selectedIdx.id, currentAuthor);
@@ -116,7 +112,7 @@ const AuthorList = () => {
     setAddBook(false);
   };
 
-  const addBook = async () => {
+  const callAddBook = async () => {
     closeBook();
     const book = {
       isbn: bookStore.isbn,
@@ -129,7 +125,7 @@ const AuthorList = () => {
     setAuthors(data);
   };
 
-  const removeBook = async (authorId, book) => {
+  const callDeleteBook = async (authorId, book) => {
     await removeBookApi(authorId, book);
     const data = await getAuthorListApi();
     setAuthors(data);
@@ -148,15 +144,15 @@ const AuthorList = () => {
       <NavbarComponent />
       <DeleteAuthorComponent
         open={deleteAuthor}
-        cancel={cancelDeleteAuthor}
-        callDelete={deleteAuthorFunc}
+        cancel={cancelBtnToDeleteAuthor}
+        callDelete={callDeleteAuthor}
       />
       <EditAuthorComponenet
         open={editAuthor}
-        closeDialog={closeEditAuthor}
-        updateAuthor={updateAuthor}
+        closeDialog={closeEditAuthorModal}
+        updateAuthor={callUpdateAuthor}
       />
-      <AddBook open={book} closeBook={closeBook} addBook={addBook} />
+      <AddBook open={book} closeBook={closeBook} addBook={callAddBook} />
       <br />
       <br />
 
@@ -178,15 +174,14 @@ const AuthorList = () => {
           <TableBody>
             {authors.map((item, index) => {
               return (
-                <Data
+                <TableDataComponent
                   item={item}
                   index={index}
-                  openEditDialog={openEditAuthor}
+                  openEditDialog={openModalToEditAuthor}
                   setSelectedIndex={setSelectedIndex}
                   setDeleteAuthor={setDeleteAuthor}
-                  // setAddBook={setAddBook}
                   openBookModal={openBookModal}
-                  removeBook={removeBook}
+                  removeBook={callDeleteBook}
                   key={`${item.firstName}_${item.lastName}_${item.phoneNumber}_${item.id}`}
                 />
               );
@@ -198,7 +193,7 @@ const AuthorList = () => {
   );
 };
 
-const Data = (props) => {
+const TableDataComponent = (props) => {
   const {
     item,
     index,
