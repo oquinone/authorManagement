@@ -136,7 +136,11 @@ const AuthorList = () => {
   };
 
   if (loading) {
-    return <CircularProgress />;
+    return (
+      <div id="spinner">
+        <CircularProgress />
+      </div>
+    );
   }
 
   return (
