@@ -134,7 +134,9 @@ const AuthorList = () => {
   if (loading) {
     return (
       <div id="spinner">
-        <CircularProgress />
+        <Typography>
+          Server is starting, this might take a few minutes <CircularProgress />
+        </Typography>
       </div>
     );
   }
