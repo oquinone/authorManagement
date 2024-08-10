@@ -7,6 +7,7 @@ import {
   addBookApi,
   removeBookApi,
 } from "../apis/api";
+import { useAuthorStore } from "../store/store";
 
 export function useAuthorListHook() {
   const [authors, setAuthors] = useState([]);
@@ -127,4 +128,37 @@ export function useAuthorListHook() {
 export function useTableHook() {
   const [openCollapse, setCollapse] = useState(false);
   return { openCollapse, setCollapse };
+}
+
+export function useAddAuthorHook() {
+  const [snackBar, setSnackBar] = useState(false);
+  const firstName = useAuthorStore((state) => state.firstName);
+  const lastName = useAuthorStore((state) => state.lastName);
+  const located = useAuthorStore((state) => state.located);
+  const phoneNumber = useAuthorStore((state) => state.phoneNumber);
+
+  const updateFirstName = useAuthorStore((state) => state.updateFirstName);
+  const updateLastName = useAuthorStore((state) => state.updateLastName);
+  const updateLocated = useAuthorStore((state) => state.updateLocated);
+  const updatePhoneNumber = useAuthorStore((state) => state.updatePhoneNumber);
+  const resetData = useAuthorStore((state) => state.resetData);
+
+  const handleCloseSnackbar = () => {
+    setSnackBar(false);
+  };
+
+  return {
+    snackBar,
+    setSnackBar,
+    handleCloseSnackbar,
+    firstName,
+    lastName,
+    located,
+    phoneNumber,
+    updateFirstName,
+    updateLastName,
+    updateLocated,
+    updatePhoneNumber,
+    resetData,
+  };
 }
