@@ -1,26 +1,27 @@
 import React from "react";
-import { useEditAuthorStore } from "../store/store";
 import {
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
   Button,
+  TextField,
 } from "@mui/material";
-import TextField from "@mui/material/TextField";
+import { useEditAuthorHook } from "../hooks/hooks";
 import "../styling/editAuthor.scss";
 
-const EditAuthorComponenet = (props) => {
+const EditAuthorComponent = (props) => {
   const { open, closeDialog, updateAuthor } = props;
-  const firstName = useEditAuthorStore((state) => state.firstName);
-  const lastName = useEditAuthorStore((state) => state.lastName);
-  const located = useEditAuthorStore((state) => state.located);
-  const phoneNumber = useEditAuthorStore((state) => state.phoneNumber);
-
-  const editFirstName = useEditAuthorStore((state) => state.editFirstName);
-  const editLastName = useEditAuthorStore((state) => state.editLastName);
-  const editLocated = useEditAuthorStore((state) => state.editLocated);
-  const editPhoneNum = useEditAuthorStore((state) => state.editPhoneNumber);
+  const {
+    firstName,
+    lastName,
+    located,
+    phoneNumber,
+    editFirstName,
+    editLastName,
+    editLocated,
+    editPhoneNum,
+  } = useEditAuthorHook();
 
   return (
     <div>
@@ -82,4 +83,4 @@ const EditAuthorComponenet = (props) => {
     </div>
   );
 };
-export default EditAuthorComponenet;
+export default EditAuthorComponent;

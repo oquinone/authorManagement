@@ -185,3 +185,26 @@ export function useAddBookHook() {
     setCopyrightDate,
   };
 }
+
+export function useEditAuthorHook() {
+  const firstName = useEditAuthorStore((state) => state.firstName);
+  const lastName = useEditAuthorStore((state) => state.lastName);
+  const located = useEditAuthorStore((state) => state.located);
+  const phoneNumber = useEditAuthorStore((state) => state.phoneNumber);
+
+  const editFirstName = useEditAuthorStore((state) => state.editFirstName);
+  const editLastName = useEditAuthorStore((state) => state.editLastName);
+  const editLocated = useEditAuthorStore((state) => state.editLocated);
+  const editPhoneNum = useEditAuthorStore((state) => state.editPhoneNumber);
+
+  return {
+    firstName,
+    lastName,
+    located,
+    phoneNumber,
+    editFirstName,
+    editLastName,
+    editLocated,
+    editPhoneNum,
+  };
+}

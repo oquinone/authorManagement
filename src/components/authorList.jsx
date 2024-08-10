@@ -2,7 +2,7 @@ import "../styling/authorList.scss";
 import NavbarComponent from "./navbar";
 import AddBookComponent from "./addBook";
 import DeleteAuthorComponent from "./deleteAuthor";
-import EditAuthorComponenet from "./editAuthor";
+import EditAuthorComponent from "./editAuthor";
 
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
@@ -66,7 +66,7 @@ const AuthorList = () => {
         cancel={cancelBtnToDeleteAuthor}
         callDelete={callDeleteAuthor}
       />
-      <EditAuthorComponenet
+      <EditAuthorComponent
         open={editAuthor}
         closeDialog={closeEditAuthorModal}
         updateAuthor={callUpdateAuthor}
