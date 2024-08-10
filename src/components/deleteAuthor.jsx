@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 
-export const DeleteAuthorComponent = (props) => {
+const DeleteAuthorComponent = (props) => {
   const { open, cancel, callDelete } = props;
   return (
     <div>
@@ -34,3 +34,5 @@ export const DeleteAuthorComponent = (props) => {
     </div>
   );
 };
+
+export default DeleteAuthorComponent;

@@ -1,135 +1,52 @@
-import React, { useEffect, useState } from "react";
 import "../styling/authorList.scss";
 import NavbarComponent from "./navbar";
-import IconButton from "@mui/material/IconButton";
+import AddBook from "./addBook";
+import DeleteAuthorComponent from "./deleteAuthor";
+import EditAuthorComponenet from "./editAuthor";
+
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import CircularProgress from "@mui/material/CircularProgress";
-import {
-  getAuthorListApi,
-  deleteAuthorApi,
-  updateAuthorApi,
-  addBookApi,
-  removeBookApi,
-} from "../apis/api";
-import { DeleteAuthorComponent } from "./deleteAuthor";
-import EditAuthorComponenet from "./editAuthor";
-import { useEditAuthorStore, useAddBookStore } from "../store/store";
-import AddBook from "./addBook";
-import Tooltip from "@mui/material/Tooltip";
-
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-import { styled } from "@mui/material/styles";
+import {
+  Tooltip,
+  IconButton,
+  CircularProgress,
+  Table,
+  TableBody,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+  Box,
+  Collapse,
+  styled,
+} from "@mui/material";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import { useAuthorListHook, useTableHook } from "../hooks/hooks";
 
 const AuthorList = () => {
-  const [authors, setAuthors] = useState([]);
-  const [deleteAuthor, setDeleteAuthor] = useState(false);
-  const [editAuthor, setEditAuthor] = useState(false);
-  const [book, setAddBook] = useState(false);
-  const [selectedIdx, setSelectedIndex] = useState({});
-  const [loading, setLoading] = useState(true);
-
-  const { editFirstName, editLastName, editPhoneNumber, editLocated } =
-    useEditAuthorStore();
-
-  const storeFirstName = useEditAuthorStore((state) => state.firstName);
-  const storeLastName = useEditAuthorStore((state) => state.lastName);
-  const storePhoneNumber = useEditAuthorStore((state) => state.phoneNumber);
-  const storeLocated = useEditAuthorStore((state) => state.located);
-
-  const bookStore = useAddBookStore();
-
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getAuthorListApi();
-      setAuthors(data);
-      setLoading(false);
-    };
-    getData();
-  }, []);
-
-  const cancelBtnToDeleteAuthor = () => {
-    setDeleteAuthor(false);
-  };
-
-  const callDeleteAuthor = async () => {
-    setDeleteAuthor(false);
-    const item = authors[selectedIdx.index];
-    await deleteAuthorApi(item.id);
-    const data = await getAuthorListApi();
-    setAuthors(data);
-  };
-
-  const openModalToEditAuthor = (id, index) => {
-    const row = authors[index];
-    editFirstName(row.firstName);
-    editLastName(row.lastName);
-    editPhoneNumber(row.phoneNumber);
-    editLocated(row.located);
-    setSelectedIndex({ id, index });
-    setEditAuthor(true);
-  };
-
-  const closeEditAuthorModal = () => {
-    setEditAuthor(false);
-  };
-
-  const callUpdateAuthor = async () => {
-    let currentAuthor = {
-      firstName: storeFirstName,
-      lastName: storeLastName,
-      phoneNumber: storePhoneNumber,
-      located: storeLocated,
-      id: selectedIdx.id,
-    };
-    await updateAuthorApi(selectedIdx.id, currentAuthor);
-    const data = await getAuthorListApi();
-    setAuthors(data);
-    setEditAuthor(false);
-  };
-
-  const openBookModal = (id, index) => {
-    setSelectedIndex({ id: id, index: index });
-    bookStore.resetBookStore();
-    setAddBook(true);
-  };
-
-  const closeBook = () => {
-    setAddBook(false);
-  };
-
-  const callAddBook = async () => {
-    closeBook();
-    const book = {
-      isbn: bookStore.isbn,
-      bookName: bookStore.bookName,
-      copyrightDate: bookStore.copyrightDate,
-      publishedDate: bookStore.publishedDate,
-    };
-    await addBookApi(selectedIdx.id, book);
-    const data = await getAuthorListApi();
-    setAuthors(data);
-  };
-
-  const callDeleteBook = async (authorId, book) => {
-    await removeBookApi(authorId, book);
-    const data = await getAuthorListApi();
-    setAuthors(data);
-  };
+  const {
+    editAuthor,
+    book,
+    authors,
+    loading,
+    deleteAuthor,
+    cancelBtnToDeleteAuthor,
+    callDeleteAuthor,
+    setSelectedIndex,
+    setDeleteAuthor,
+    openModalToEditAuthor,
+    closeEditAuthorModal,
+    callUpdateAuthor,
+    openBookModal,
+    closeBook,
+    callAddBook,
+    callDeleteBook,
+  } = useAuthorListHook();
 
   if (loading) {
     return (
@@ -205,7 +122,7 @@ const TableDataComponent = (props) => {
     removeBook,
     openBookModal,
   } = props;
-  const [openCollapse, setCollapse] = useState(false);
+  const { openCollapse, setCollapse } = useTableHook();
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
