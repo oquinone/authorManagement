@@ -1,6 +1,6 @@
 import "../styling/authorList.scss";
 import NavbarComponent from "./navbar";
-import AddBook from "./addBook";
+import AddBookComponent from "./addBook";
 import DeleteAuthorComponent from "./deleteAuthor";
 import EditAuthorComponenet from "./editAuthor";
 
@@ -71,7 +71,11 @@ const AuthorList = () => {
         closeDialog={closeEditAuthorModal}
         updateAuthor={callUpdateAuthor}
       />
-      <AddBook open={book} closeBook={closeBook} addBook={callAddBook} />
+      <AddBookComponent
+        open={book}
+        closeBook={closeBook}
+        addBook={callAddBook}
+      />
       <br />
       <br />
 

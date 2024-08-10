@@ -162,3 +162,26 @@ export function useAddAuthorHook() {
     resetData,
   };
 }
+
+export function useAddBookHook() {
+  const isbn = useAddBookStore((state) => state.isbn);
+  const bookName = useAddBookStore((state) => state.bookName);
+  const copyrightDate = useAddBookStore((state) => state.copyrightDate);
+  const publishedDate = useAddBookStore((state) => state.publishedDate);
+
+  const setIsbn = useAddBookStore((state) => state.enterIsbn);
+  const setBookName = useAddBookStore((state) => state.enterBookName);
+  const setPublishedDate = useAddBookStore((state) => state.enterPublishedDate);
+  const setCopyrightDate = useAddBookStore((state) => state.enterCopyRightDate);
+
+  return {
+    isbn,
+    bookName,
+    copyrightDate,
+    publishedDate,
+    setIsbn,
+    setBookName,
+    setPublishedDate,
+    setCopyrightDate,
+  };
+}

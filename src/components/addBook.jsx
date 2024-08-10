@@ -1,5 +1,4 @@
-import React from "react";
-import { useAddBookStore } from "../store/store";
+import { useAddBookHook } from "../hooks/hooks";
 import {
   Dialog,
   DialogTitle,
@@ -10,18 +9,18 @@ import {
 } from "@mui/material";
 import "../styling/addBook.scss";
 
-const AddBook = (props) => {
+const AddBookComponent = (props) => {
   const { open, closeBook, addBook } = props;
-
-  const isbn = useAddBookStore((state) => state.isbn);
-  const bookName = useAddBookStore((state) => state.bookName);
-  const copyrightDate = useAddBookStore((state) => state.copyrightDate);
-  const publishedDate = useAddBookStore((state) => state.publishedDate);
-
-  const setIsbn = useAddBookStore((state) => state.enterIsbn);
-  const setBookName = useAddBookStore((state) => state.enterBookName);
-  const setPublishedDate = useAddBookStore((state) => state.enterPublishedDate);
-  const setCopyrightDate = useAddBookStore((state) => state.enterCopyRightDate);
+  const {
+    isbn,
+    bookName,
+    copyrightDate,
+    publishedDate,
+    setIsbn,
+    setBookName,
+    setPublishedDate,
+    setCopyrightDate,
+  } = useAddBookHook();
 
   return (
     <div>
@@ -83,4 +82,4 @@ const AddBook = (props) => {
     </div>
   );
 };
-export default AddBook;
+export default AddBookComponent;
